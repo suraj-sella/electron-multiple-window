@@ -18,7 +18,7 @@ let win: BrowserWindow | null
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
-function createWindow() {
+function createWindows() {
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     webPreferences: {
@@ -37,6 +37,12 @@ function createWindow() {
     // win.loadFile('dist/index.html')
     win.loadFile(path.join(process.env.DIST, 'index.html'))
   }
+
+  // window1.html
+  new BrowserWindow().loadURL('http://localhost:5173//window1.html')
+
+  // window2.html
+  new BrowserWindow().loadURL('http://localhost:5173//window2.html')
 }
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -53,8 +59,8 @@ app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createWindows()
   }
 })
 
-app.whenReady().then(createWindow)
+app.whenReady().then(createWindows)

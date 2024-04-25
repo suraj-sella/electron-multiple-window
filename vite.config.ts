@@ -23,4 +23,13 @@ export default defineConfig({
       renderer: {},
     }),
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        index: path.join(__dirname, 'index.html'),
+        window1: path.join(__dirname, 'window1.html'),
+        window2: path.join(__dirname, 'window2.html'),
+      },
+    },
+  },
 })
